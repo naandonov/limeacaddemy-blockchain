@@ -2,9 +2,9 @@ const hre = require("hardhat");
 const library = require('../artifacts/contracts/library.sol/Library.json')
 
 const run = async function() {
-    const provider = new hre.ethers.providers.JsonRpcProvider("https://eth-goerli.g.alchemy.com/v2/EIqsJpHyDxs4sbun8eXa_WD9RX2Fp9Fb")
+    const provider = new hre.ethers.providers.InfuraProvider("goerli", "40c2813049e44ec79cb4d7e0d18de173")
     const wallet = new hre.ethers.Wallet("0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80", provider);
-    const contractAddress = "0x3D1bf2A5EFE4be1D0EFeD337eda3a90B925Ab163"
+    const contractAddress = "0xb9EDE9Bf4ee306a8d7bb283F677bf85cDABfC9e5"
     const libraryContract = new hre.ethers.Contract(contractAddress, library.abi, wallet)
 
     const addTx = await libraryContract.addBook("Everest", 4, {gasLimit: 100000})
