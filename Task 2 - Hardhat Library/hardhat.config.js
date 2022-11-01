@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@nomiclabs/hardhat-etherscan");
 require("dotenv").config();
 const { ETHERSCAN_API_KEY, ALCHEMY_API_KEY, GOERLI_PRIVATE_KEY } = process.env;
 
@@ -8,12 +9,14 @@ module.exports = {
   networks: {
     goerli: {
       url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-      accounts: [`0x${GOERLI_PRIVATE_KEY}`]
+      accounts: [`0x${GOERLI_PRIVATE_KEY}`],
+      gasPrice: "auto"
     }
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY
-  }
+  },
+  gasPrice: "auto"
 };
 
 task("deploy-testnets", "Deploys contract on a provided network")

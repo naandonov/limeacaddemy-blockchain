@@ -22,7 +22,7 @@ async function deployLibraryContract() {
 
     await hre.run('print', { message: 'Done!' });
 
-    await hre.run("verify:verify", { address: libraryContract.address });
+    // await hre.run("verify:verify", { address: libraryContract.address });
 }
   
 module.exports = deployLibraryContract;
